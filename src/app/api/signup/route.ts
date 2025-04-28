@@ -14,10 +14,7 @@ export async function POST(request: Request) {
             body: JSON.stringify(SignupMutation(body)),
         });
 
-        console.log("response", response);
-
         const data = await response.json();
-        console.log("data", data);
         (await cookies()).set("session", data.data.signup.access_token, {
             httpOnly: true,
         });
