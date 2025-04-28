@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, useForm, Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Loader2, PlusCircle } from "lucide-react";
@@ -31,7 +31,7 @@ export function TodoForm() {
         control,
         formState: { isSubmitting },
     } = useForm<SchemaType>({
-        resolver: zodResolver(todoSchema),
+        resolver: zodResolver(todoSchema) as unknown as Resolver<SchemaType>,
         defaultValues: {
             title: "",
             description: "",

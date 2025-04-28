@@ -8,7 +8,7 @@ export const fetcher = async (url: string) => {
 };
 
 // Mutator function to update data
-export const mutator = async (url: string, body: any) => {
+export const mutator = async (url: string, body: unknown) => {
     return fetch(url, {
         method: "POST",
         headers: {

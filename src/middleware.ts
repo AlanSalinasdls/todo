@@ -7,7 +7,7 @@ export const config = {
 };
 
 export default async function middleware(request: NextRequest) {
-    let cookie = (await cookies()).get("session");
+    const cookie = (await cookies()).get("session");
 
     if (cookie) {
         const response = await fetch(process.env.GRAPHQL_ENDPOINT!, {

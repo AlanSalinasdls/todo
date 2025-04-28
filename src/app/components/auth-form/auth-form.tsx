@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, UseFormRegister } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,7 +25,6 @@ import useSWRMutation from "swr/mutation";
 import {
     AuthInput,
     SignupInput,
-    User,
 } from "@/lib/graphql-codegen/generated/graphql";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/lib/store/user";
@@ -39,7 +38,7 @@ export function AuthForm() {
 
     const { setUser } = useUserStore();
 
-    const { trigger: login, error } = useSWRMutation(
+    const { trigger: login } = useSWRMutation(
         "/api/login",
         (url: string, { arg }: { arg: AuthInput }) => mutator(url, arg)
     );
@@ -158,7 +157,11 @@ export function AuthForm() {
                         handleSubmit={handleSubmit}
                         onSubmit={onSubmit}
                         serverError={serverError || ""}
-                        register={register}
+                        register={
+                            register as unknown as UseFormRegister<
+                                LoginFormValues | SignupFormValues
+                            >
+                        }
                         errors={errors}
                         isSubmitting={isSubmitting}
                         showPassword={showPassword}

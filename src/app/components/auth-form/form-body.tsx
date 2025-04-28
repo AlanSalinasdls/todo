@@ -19,7 +19,7 @@ export function FormBody({
     setShowConfirmPassword,
 }: FormBodyProps) {
     return (
-        <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {serverError && (
                 <Alert variant="destructive" className="mb-4">
                     <AlertCircle className="h-4 w-4" />
