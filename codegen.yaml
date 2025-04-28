@@ -1,0 +1,12 @@
+overwrite: true
+schema:
+    - ${GRAPHQL_ENDPOINT}
+documents: 'src/lib/graphql-codegen/graphql-operations.graphql'
+generates:
+    src/lib/graphql-codegen/generated/graphql.ts:
+        plugins:
+            - 'typescript'
+            - 'typescript-operations'
+            - 'typescript-resolvers'
+            - 'fragment-matcher'
+            - 'named-operations-object'
