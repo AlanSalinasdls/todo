@@ -19,6 +19,7 @@ export async function GET(request: NextRequest) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "apollo-require-preflight": "true",
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(UserByEmailQuery(email)),

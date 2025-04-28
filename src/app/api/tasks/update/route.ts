@@ -9,6 +9,7 @@ export async function POST(request: Request) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "apollo-require-preflight": "true",
                 Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify(UpdateTaskMutations(taskId, data)),

@@ -10,14 +10,12 @@ export async function POST(request: Request) {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "apollo-require-preflight": "true",
             },
             body: JSON.stringify(SignupMutation(body)),
         });
 
-        console.log("response", response);
-
         const data = await response.json();
-        console.log("data", data);
         (await cookies()).set("session", data.data.signup.access_token, {
             httpOnly: true,
         });
